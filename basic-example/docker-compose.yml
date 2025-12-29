@@ -24,11 +24,13 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:rw"
       # Bind Docker volume on host for JupyterHub database and cookie secrets
       - "jupyterhub-data:/data"
+      # Host directory for all user folders
+      - "F:/Docker/JupyterHub:/srv/jupyterhub/users"
     ports:
-      - "8000:8000"
+      - "8080:8000"
     environment:
       # This username will be a JupyterHub admin
-      JUPYTERHUB_ADMIN: admin
+      JUPYTERHUB_ADMIN: michael
       # All containers will join this network
       DOCKER_NETWORK_NAME: jupyterhub-network
       # JupyterHub will spawn this Notebook image for users
